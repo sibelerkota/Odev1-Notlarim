@@ -12,7 +12,7 @@ public class CharacterController : MonoBehaviour
     private bool grounded;
     private bool started;
     private bool jumping;
-
+    
 
 
     private void Awake()
@@ -25,12 +25,12 @@ public class CharacterController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown("space")) 
+        if (Input.GetKeyDown("space"))
         {
-            if(started && grounded)
+            if (started && grounded)
             {
-                _animator.SetTrigger("Jump");   
-                grounded= false;
+                _animator.SetTrigger("Jump");
+                grounded = false;
                 jumping = true;
 
 
@@ -41,35 +41,35 @@ public class CharacterController : MonoBehaviour
                 started = true;
 
             }
-        
+
         }
-           
-            _animator.SetBool("Grounded", grounded);
+
+        _animator.SetBool("Grounded", grounded);
 
     }
 
     private void FixedUpdate()
     {
-        if(started)
+        if (started)
         {
-            _rigidbody2D.velocity= new Vector2 (speed, _rigidbody2D.velocity.y);    
+            _rigidbody2D.velocity = new Vector2(speed, _rigidbody2D.velocity.y);
 
         }
-        if(jumping) 
+        if (jumping)
         {
             _rigidbody2D.AddForce(new Vector2(0f, jumpForce));
-            jumping= false;
+            jumping = false;
 
         }
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
-       if (other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Ground"))
 
-       {
+        {
             grounded = true;
 
-       }
+        }
 
     }
 }

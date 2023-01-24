@@ -5,14 +5,14 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
     [SerializeField] private AudioClip clickSound;
-    private int count=0;
+    private int count = 0;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-       if(other.gameObject.CompareTag("Collectible"))
+        if (other.gameObject.CompareTag("Collectible"))
         {
             count++;
-            AudioSource.PlayClipAtPoint(clickSound, other.transform.position); 
+            AudioSource.PlayClipAtPoint(clickSound, other.transform.position);
             Destroy(other.gameObject);
         }
     }
